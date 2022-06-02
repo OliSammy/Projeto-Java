@@ -20,6 +20,12 @@ public class App {
             System.out.println("Digite o movimento que você deseja fazer: \n1.Up 2.Down 3.Right 4.Left\n");
             movimento = ler.next();
             try {
+                int move = Integer.parseInt(movimento);
+                tab.movimentarRobo(move);
+            } catch (Exception e) {
+            }
+
+            try {
                 tab.movimentarRobo(movimento);
             } catch (MovimentoInvalidoException e) {
                 System.out.println("Error: " + e.getMessage());
