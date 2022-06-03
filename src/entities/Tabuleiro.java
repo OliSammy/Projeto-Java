@@ -40,24 +40,25 @@ public class Tabuleiro {
                 break;
             case "Down":
                 if (r1.getColuna() + 1 > colunas - 1) {
-                    throw new MovimentoInvalidoException();
+                    throw new MovimentoInvalidoException(movimento);
                 }
                 r1.setColuna(1);
                 break;
             case "Right":
                 if (r1.getLinha() + 1 > linhas - 1) {
-                    throw new MovimentoInvalidoException();
+                    throw new MovimentoInvalidoException(movimento);
                 }
                 r1.setLinha(1);
                 break;
             case "Left":
                 if (r1.getLinha() - 1 < 0) {
-                    throw new MovimentoInvalidoException();
+                    throw new MovimentoInvalidoException(movimento);
                 }
                 r1.setLinha(-1);
                 break;
             default:
-                System.out.println("Movimento inválido");
+                System.out.println("Nenhum movimento válido foi digitado.");
+                break;
         }
     }
 
@@ -77,18 +78,19 @@ public class Tabuleiro {
                 break;
             case 3:
                 if (r1.getLinha() + 1 > linhas - 1) {
-                    throw new MovimentoInvalidoException("Left");
+                    throw new MovimentoInvalidoException("Right");
                 }
                 r1.setLinha(1);
                 break;
             case 4:
                 if (r1.getLinha() - 1 < 0) {
-                    throw new MovimentoInvalidoException("Right");
+                    throw new MovimentoInvalidoException("Left");
                 }
                 r1.setLinha(-1);
                 break;
             default:
                 System.out.println("Movimento inválido");
+                break;
         }
     }
 

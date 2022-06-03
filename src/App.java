@@ -19,21 +19,28 @@ public class App {
             tab.mostrarTabuleiro();
             System.out.println("Digite o movimento que você deseja fazer: \n1.Up 2.Down 3.Right 4.Left\n");
             movimento = ler.next();
+            // Criamos variaveis temporarias para verificar depois se foi feito a conversao
+            // pra inteiro, ou se o dado /// passado era a palavra.
+            int temp = 0;
+            int move = 0;
             try {
-                int move = Integer.parseInt(movimento);
-                tab.movimentarRobo(move);
+                move = Integer.parseInt(movimento);
+                temp = 1;
             } catch (Exception e) {
             }
 
             try {
-                tab.movimentarRobo(movimento);
+                if (temp == 0)
+                    tab.movimentarRobo(movimento);
+                else
+                    tab.movimentarRobo(move);
             } catch (MovimentoInvalidoException e) {
                 System.out.println("Error: " + e.getMessage());
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
             }
-
         }
+        ler.close();
 
     }
 }
