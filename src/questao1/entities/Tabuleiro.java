@@ -1,6 +1,6 @@
-package entities;
+package questao1.entities;
 
-import exceptions.*;
+import questao1.exceptions.*;
 
 public class Tabuleiro {
     private int linhas;

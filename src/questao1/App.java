@@ -1,7 +1,9 @@
+package questao1;
+
 import java.util.Scanner;
 
-import entities.*;
-import exceptions.MovimentoInvalidoException;
+import questao1.entities.*;
+import questao1.exceptions.*;
 
 public class App {
     public static void main(String[] args) throws Exception {

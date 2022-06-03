@@ -1,4 +1,4 @@
-package exceptions;
+package questao1.exceptions;
 
 public class MovimentoInvalidoException extends Exception {
     public MovimentoInvalidoException() {

@@ -1,4 +1,4 @@
-package entities;
+package questao1.entities;
 
 public class Robo {
     private int linha = 0, coluna = 0;

@@ -1,4 +1,4 @@
-package entities;
+package questao1.entities;
 
 public class Comida {
     private int linhas, colunas;
