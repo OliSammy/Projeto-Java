@@ -1,5 +1,7 @@
 package entities;
 
+import exceptions.MovimentoInvalidoException;
+
 public class Robo {
     private int linha = 0, coluna = 0;
 
@@ -7,6 +9,100 @@ public class Robo {
 
     public Robo(String cor) {
         this.cor = cor;
+    }
+
+    public void movimentar(String movimento, Tabuleiro tabuleiro) throws MovimentoInvalidoException {
+        switch (movimento.toUpperCase()) {
+            case "Up":
+                if (linha - 1 < 0) {
+                    throw new MovimentoInvalidoException(movimento);
+                }
+                linha -= 1;
+                break;
+            case "Down":
+                if (linha + 1 > tabuleiro.getLinhas()) {
+                    throw new MovimentoInvalidoException();
+                }
+                linha += 1;
+                break;
+            case "Right":
+                if (coluna + 1 > tabuleiro.getColunas()) {
+                    throw new MovimentoInvalidoException();
+                }
+                coluna += 1;
+                break;
+            case "Left":
+                if (coluna - 1 < 0) {
+                    throw new MovimentoInvalidoException();
+                }
+                coluna -= 1;
+                break;
+            case "W":
+                if (linha - 1 < 0) {
+                    throw new MovimentoInvalidoException("up");
+                }
+                linha -= 1;
+                break;
+            case "S":
+                if (linha + 1 > tabuleiro.getLinhas()) {
+                    throw new MovimentoInvalidoException("down");
+                }
+                linha += 1;
+                break;
+            case "D":
+                if (coluna + 1 > tabuleiro.getColunas()) {
+                    throw new MovimentoInvalidoException("right");
+                }
+                coluna += 1;
+                break;
+            case "A":
+                if (coluna - 1 < 0) {
+                    throw new MovimentoInvalidoException("left");
+                }
+                coluna -= 1;
+                break;
+            default:
+                System.out.println("Movimento inválido");
+        }
+    }
+
+    public void movimentar(int movimento, Tabuleiro tabuleiro) throws MovimentoInvalidoException {
+        switch (movimento) {
+            case 1:
+                if (linha - 1 < 0) {
+                    throw new MovimentoInvalidoException("up");
+                }
+                linha -= 1;
+                break;
+            case 3:
+                if (linha + 1 > tabuleiro.getLinhas()) {
+                    throw new MovimentoInvalidoException("down");
+                }
+                linha += 1;
+                break;
+            case 4:
+                if (coluna + 1 > tabuleiro.getColunas()) {
+                    throw new MovimentoInvalidoException("right");
+                }
+                coluna += 1;
+                break;
+            case 2:
+                if (coluna - 1 < 0) {
+                    throw new MovimentoInvalidoException("left");
+                }
+                coluna -= 1;
+                break;
+            default:
+                System.out.println("Movimento inválido");
+        }
+    }
+
+    public boolean ganhar(Comida comida) {
+        if (linha == comida.getLinha() && coluna == comida.getColuna()) {
+            System.out.println("O robo " + cor + " ganhou!");
+            return false;
+        }
+        return true;
     }
 
     public int getLinha() {
