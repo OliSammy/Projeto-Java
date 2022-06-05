@@ -13,25 +13,25 @@ public class Robo {
 
     public void movimentar(String movimento, Tabuleiro tabuleiro) throws MovimentoInvalidoException {
         switch (movimento.toUpperCase()) {
-            case "Up":
+            case "UP":
                 if (linha - 1 < 0) {
                     throw new MovimentoInvalidoException(movimento);
                 }
                 linha -= 1;
                 break;
-            case "Down":
-                if (linha + 1 > tabuleiro.getLinhas()) {
+            case "DOWN":
+                if (linha + 1 > tabuleiro.getLinhas() - 1) {
                     throw new MovimentoInvalidoException();
                 }
                 linha += 1;
                 break;
-            case "Right":
-                if (coluna + 1 > tabuleiro.getColunas()) {
+            case "RIGHT":
+                if (coluna + 1 > tabuleiro.getColunas() - 1) {
                     throw new MovimentoInvalidoException();
                 }
                 coluna += 1;
                 break;
-            case "Left":
+            case "LEFT":
                 if (coluna - 1 < 0) {
                     throw new MovimentoInvalidoException();
                 }
@@ -44,13 +44,13 @@ public class Robo {
                 linha -= 1;
                 break;
             case "S":
-                if (linha + 1 > tabuleiro.getLinhas()) {
+                if (linha + 1 > tabuleiro.getLinhas() - 1) {
                     throw new MovimentoInvalidoException("down");
                 }
                 linha += 1;
                 break;
             case "D":
-                if (coluna + 1 > tabuleiro.getColunas()) {
+                if (coluna + 1 > tabuleiro.getColunas() - 1) {
                     throw new MovimentoInvalidoException("right");
                 }
                 coluna += 1;
@@ -75,13 +75,13 @@ public class Robo {
                 linha -= 1;
                 break;
             case 3:
-                if (linha + 1 > tabuleiro.getLinhas()) {
+                if (linha + 1 > tabuleiro.getLinhas() - 1) {
                     throw new MovimentoInvalidoException("down");
                 }
                 linha += 1;
                 break;
             case 4:
-                if (coluna + 1 > tabuleiro.getColunas()) {
+                if (coluna + 1 > tabuleiro.getColunas() - 1) {
                     throw new MovimentoInvalidoException("right");
                 }
                 coluna += 1;

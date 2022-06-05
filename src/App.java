@@ -8,10 +8,9 @@ public class App {
         Scanner ler = new Scanner(System.in);
         Robo r1 = new Robo("Azul");
 
-        System.err.print("Digite as dimenções do tabuleiro: ");
-        String[] in = ler.nextLine().split(" ");
-        int linhas = Integer.parseInt(in[0]);
-        int colunas = Integer.parseInt(in[1]);
+        System.out.print("Digite as dimenções do tabuleiro: ");
+        int linhas  = ler.nextInt();
+        int colunas  = ler.nextInt();
 
         System.out.print("Digite as coordenadas da comida: ");
         int a = ler.nextInt();

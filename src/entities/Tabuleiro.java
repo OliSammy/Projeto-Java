@@ -12,8 +12,8 @@ public class Tabuleiro {
     }
 
     public void mostrarTabuleiro(Robo r1) {
-        for (int i = 0; i <= linhas; i++) {
-            for (int j = 0; j <= colunas; j++) {
+        for (int i = 0; i < linhas; i++) {
+            for (int j = 0; j < colunas; j++) {
                 if (r1.getLinha() == i && r1.getColuna() == j) {
                     System.out.print(" R ");
                 } else if (comida.getLinha() == i && comida.getColuna() == j) {
