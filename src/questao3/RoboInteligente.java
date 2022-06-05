@@ -1,21 +1,16 @@
-package questao2.entities;
-
+package questao3;
+import questao2.entities.Robo;
+import questao2.entities.Tabuleiro;
 import questao1.exceptions.*;
-import questao1.entities.Comida;
 
-public class Robo {
-    protected int linha = 0, coluna = 0;
-    protected int jogadas = 0;
-    protected String cor;
+public class RoboInteligente extends Robo{
 
-    public Robo(String cor) {
-        this.cor = cor;
+    public RoboInteligente(String cor) {
+        super(cor);
     }
 
-    public Robo(String cor, int linha, int coluna) {
-        this(cor);
-        this.linha = linha;
-        this.coluna = coluna;
+    public RoboInteligente(String cor, int linha, int coluna){
+        super(cor, linha, coluna);
     }
 
     public void movimentar(String i, Tabuleiro tab) throws MovimentoInvalidoException {
@@ -104,46 +99,8 @@ public class Robo {
         }
     }
 
-    public boolean ganhar(Comida comida) {
-        this.jogadas += 1;
 
-        if (linha == comida.getLinha() && coluna == comida.getColuna()) {
-            System.out.println("O robo " + cor + " ganhou!");
-            return false;
-        }
-        return true;
-    }
 
-    public int getLinha() {
-        return linha;
-    }
 
-    public void setLinha(int linha) {
-        this.linha += linha;
-    }
-
-    public int getColuna() {
-        return coluna;
-    }
-
-    public void setColuna(int coluna) {
-        this.coluna += coluna;
-    }
-
-    public String getCor() {
-        return cor;
-    }
-
-    public void setCor(String cor) {
-        this.cor = cor;
-    }
-
-    public int getJogadas() {
-        return jogadas;
-    }
-
-    public void setJogadas(int jogadas) {
-        this.jogadas = jogadas;
-    }
 
 }
