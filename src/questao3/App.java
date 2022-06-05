@@ -36,7 +36,7 @@ public class App {
                     condicao = tab.ganhar(r1, r2);
                 } catch (MovimentoInvalidoException | InterruptedException e) {
                     try {
-                        int teste = Integer.parseInt(e.getMessage());
+                        Integer.parseInt(e.getMessage());
                         players[j].movimentar(move.nextInt(2, 5), tab);
                         condicao = tab.ganhar(r1, r2);
                     } catch (MovimentoInvalidoException f) {
@@ -54,7 +54,8 @@ public class App {
                         System.out.println(e.getMessage());
                     }
                 }
-
+                if (!condicao)
+                    break;
             }
         }
         ler.close();

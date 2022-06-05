@@ -40,6 +40,7 @@ public class Tabuleiro {
         }
 
         else if (!r2.ganhar(comida)) {
+            mostrarTabuleiro(r1, r2);
             jogadas(r1, r2);
             return false;
         }
@@ -47,8 +48,8 @@ public class Tabuleiro {
     }
 
     public void jogadas(Robo r1, Robo r2) {
-        System.out.println(" O robo " + r1.getCor() + " jogou " + r1.getJogadas());
-        System.out.println(" O robo " + r2.getCor() + " jogou " + r2.getJogadas());
+        System.out.println(" O robo " + r1.getCor() + " jogou " + r1.getJogadas() + " vezes.");
+        System.out.println(" O robo " + r2.getCor() + " jogou " + r2.getJogadas() + " vezes.");
     }
 
     public int getLinhas() {
