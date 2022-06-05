@@ -17,12 +17,12 @@ public class Tabuleiro {
         for (int i = 0; i < linhas; i++) {
             for (int j = 0; j < colunas; j++) {
                 if (r1.getLinha() == i && r1.getColuna() == j) {
-                    System.out.print(" R" + r1.getCor().charAt(0));
+                    System.out.print(" R" + r1.getCor().toLowerCase().charAt(0));
                     if (r2.getLinha() == i && r2.getColuna() == j) {
-                        System.out.print("/R" + r2.getCor().charAt(0));
+                        System.out.print("/" + r2.getCor().toLowerCase().charAt(0));
                     }
                 } else if (r2.getLinha() == i && r2.getColuna() == j) {
-                    System.out.print(" R" + r2.getCor().charAt(0));
+                    System.out.print(" R" + r2.getCor().toLowerCase().charAt(0));
                 } else if (comida.getLinha() == i && comida.getColuna() == j) {
                     System.out.print(" C ");
                 } else {
@@ -34,21 +34,22 @@ public class Tabuleiro {
     }
 
     public boolean ganhar(Robo r1, Robo r2) {
-        if (!r1.ganhar(comida)){
+        if (!r1.ganhar(comida)) {
             jogadas(r1, r2);
-            return false;}
+            return false;
+        }
 
-        else if (!r2.ganhar(comida)){
+        else if (!r2.ganhar(comida)) {
             jogadas(r1, r2);
-            return false;}
+            return false;
+        }
         return true;
     }
 
-    public void jogadas(Robo r1, Robo r2){
+    public void jogadas(Robo r1, Robo r2) {
         System.out.println(" O robo " + r1.getCor() + " jogou " + r1.getJogadas());
         System.out.println(" O robo " + r2.getCor() + " jogou " + r2.getJogadas());
     }
-
 
     public int getLinhas() {
         return linhas;

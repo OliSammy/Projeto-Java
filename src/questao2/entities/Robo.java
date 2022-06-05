@@ -77,25 +77,25 @@ public class Robo {
         switch (movimento) {
             case 1:
                 if (linha - 1 < 0) {
-                    throw new MovimentoInvalidoException("up");
+                    throw new MovimentoInvalidoException(cor, "up");
                 }
                 linha -= 1;
                 break;
             case 3:
                 if (linha + 1 > tabuleiro.getLinhas() - 1) {
-                    throw new MovimentoInvalidoException("down");
+                    throw new MovimentoInvalidoException(cor, "down");
                 }
                 linha += 1;
                 break;
             case 4:
                 if (coluna + 1 > tabuleiro.getColunas() - 1) {
-                    throw new MovimentoInvalidoException("right");
+                    throw new MovimentoInvalidoException(cor, "right");
                 }
                 coluna += 1;
                 break;
             case 2:
                 if (coluna - 1 < 0) {
-                    throw new MovimentoInvalidoException("left");
+                    throw new MovimentoInvalidoException(cor, "left");
                 }
                 coluna -= 1;
                 break;

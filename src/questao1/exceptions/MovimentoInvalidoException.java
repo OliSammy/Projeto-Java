@@ -6,6 +6,10 @@ public class MovimentoInvalidoException extends Exception {
     }
 
     public MovimentoInvalidoException(String mensagem) {
-        super("Movimento " + mensagem + " inválido");
+        super(mensagem);
+    }
+
+    public MovimentoInvalidoException(String outraMensagem, String mensagem) {
+        super("O robô " + outraMensagem + " fez o movimento " + mensagem + ", mas é inválido.");
     }
 }

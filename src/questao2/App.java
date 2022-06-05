@@ -23,7 +23,7 @@ public class App {
         System.out.print("Digite as coordenadas da comida: ");
         int a = ler.nextInt();
         int b = ler.nextInt();
-        Comida comida = new Comida(a -1 , b - 1);
+        Comida comida = new Comida(a - 1, b - 1);
 
         Tabuleiro tab = new Tabuleiro(linhas, colunas, comida);
         while (tab.ganhar(r1, r2)) {
