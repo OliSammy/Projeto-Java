@@ -1,26 +1,22 @@
 package questao1.entities;
 
-import questao1.exceptions.*;
-
 public class Tabuleiro {
     private int linhas;
     private int colunas;
-    private Robo r1 = null;
     private Comida comida = null;
 
-    public Tabuleiro(int linhas, int colunas, Robo r1, Comida comida) {
+    public Tabuleiro(int linhas, int colunas, Comida comida) {
         this.linhas = linhas;
         this.colunas = colunas;
-        this.r1 = r1;
         this.comida = comida;
     }
 
-    public void mostrarTabuleiro() {
-        for (int i = 0; i < colunas; i++) {
-            for (int j = 0; j < linhas; j++) {
-                if (r1.getColuna() == i && r1.getLinha() == j) {
+    public void mostrarTabuleiro(Robo r1) {
+        for (int i = 0; i < linhas; i++) {
+            for (int j = 0; j < colunas; j++) {
+                if (r1.getLinha() == i && r1.getColuna() == j) {
                     System.out.print(" R ");
-                } else if (comida.getColuna() == i && comida.getLinha() == j) {
+                } else if (comida.getLinha() == i && comida.getColuna() == j) {
                     System.out.print(" C ");
                 } else {
                     System.out.print(" * ");
@@ -30,76 +26,32 @@ public class Tabuleiro {
         }
     }
 
-    public void movimentarRobo(String movimento) throws MovimentoInvalidoException {
-        switch (movimento) {
-            case "Up":
-                if (r1.getColuna() - 1 < 0) {
-                    throw new MovimentoInvalidoException(movimento);
-                }
-                r1.setColuna(-1);
-                break;
-            case "Down":
-                if (r1.getColuna() + 1 > colunas - 1) {
-                    throw new MovimentoInvalidoException(movimento);
-                }
-                r1.setColuna(1);
-                break;
-            case "Right":
-                if (r1.getLinha() + 1 > linhas - 1) {
-                    throw new MovimentoInvalidoException(movimento);
-                }
-                r1.setLinha(1);
-                break;
-            case "Left":
-                if (r1.getLinha() - 1 < 0) {
-                    throw new MovimentoInvalidoException(movimento);
-                }
-                r1.setLinha(-1);
-                break;
-            default:
-                System.out.println("Nenhum movimento válido foi digitado.");
-                break;
-        }
+    public boolean ganhar(Robo r1) {
+        return r1.ganhar(comida);
     }
 
-    public void movimentarRobo(int movimento) throws MovimentoInvalidoException {
-        switch (movimento) {
-            case 1:
-                if (r1.getColuna() - 1 < 0) {
-                    throw new MovimentoInvalidoException("Up");
-                }
-                r1.setColuna(-1);
-                break;
-            case 2:
-                if (r1.getColuna() + 1 > colunas - 1) {
-                    throw new MovimentoInvalidoException("Down");
-                }
-                r1.setColuna(1);
-                break;
-            case 3:
-                if (r1.getLinha() + 1 > linhas - 1) {
-                    throw new MovimentoInvalidoException("Right");
-                }
-                r1.setLinha(1);
-                break;
-            case 4:
-                if (r1.getLinha() - 1 < 0) {
-                    throw new MovimentoInvalidoException("Left");
-                }
-                r1.setLinha(-1);
-                break;
-            default:
-                System.out.println("Movimento inválido");
-                break;
-        }
+    public int getLinhas() {
+        return linhas;
     }
 
-    public boolean ganhar() {
-        if (r1.getLinha() == comida.getLinha() && r1.getColuna() == comida.getColuna()) {
-            System.out.println("Você ganhou! : )");
-            return false;
-        }
-        return true;
+    public void setLinhas(int linhas) {
+        this.linhas = linhas;
+    }
+
+    public int getColunas() {
+        return colunas;
+    }
+
+    public void setColunas(int colunas) {
+        this.colunas = colunas;
+    }
+
+    public Comida getComida() {
+        return comida;
+    }
+
+    public void setComida(Comida comida) {
+        this.comida = comida;
     }
 
 }
