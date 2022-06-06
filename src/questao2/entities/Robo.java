@@ -28,19 +28,19 @@ public class Robo {
                 break;
             case "DOWN":
                 if (linha + 1 > tab.getLinhas() - 1) {
-                    throw new MovimentoInvalidoException();
+                    throw new MovimentoInvalidoException(i);
                 }
                 linha += 1;
                 break;
             case "RIGHT":
                 if (coluna + 1 > tab.getColunas() - 1) {
-                    throw new MovimentoInvalidoException();
+                    throw new MovimentoInvalidoException(i);
                 }
                 coluna += 1;
                 break;
             case "LEFT":
                 if (coluna - 1 < 0) {
-                    throw new MovimentoInvalidoException();
+                    throw new MovimentoInvalidoException(i);
                 }
                 coluna -= 1;
                 break;
