@@ -24,6 +24,7 @@ public class App {
         int a = ler.nextInt();
         int b = ler.nextInt();
         Comida comida = new Comida(a - 1, b - 1);
+
         boolean condicao = true;
         Tabuleiro tab = new Tabuleiro(linhas, colunas, comida);
         while (condicao) {
@@ -39,17 +40,18 @@ public class App {
                         Integer.parseInt(e.getMessage());
                         players[j].movimentar(move.nextInt(2, 5), tab);
                         condicao = tab.ganhar(r1, r2);
-                    } catch (MovimentoInvalidoException f) {
-                        try {
-                            players[j].movimentar(move.nextInt(3, 5), tab);
-                            condicao = tab.ganhar(r1, r2);
-                        } catch (MovimentoInvalidoException g) {
+                        } catch (MovimentoInvalidoException f) {
                             try {
-                                players[j].movimentar(move.nextInt(4, 5), tab);
+                                players[j].movimentar(move.nextInt(3, 5), tab);
                                 condicao = tab.ganhar(r1, r2);
-                            } catch (Exception h) {
+                            } catch (MovimentoInvalidoException g) {
+                                try {
+                                    players[j].movimentar(move.nextInt(4, 5), tab);
+                                    condicao = tab.ganhar(r1, r2);
+                                } catch (Exception h) {
+                                }
                             }
-                        }
+
                     } catch (NumberFormatException i) {
                         System.out.println(e.getMessage());
                     }

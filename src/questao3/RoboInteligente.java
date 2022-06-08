@@ -23,21 +23,21 @@ public class RoboInteligente extends Robo {
                 }
                 linha -= 1;
                 break;
-            case 3:
+            case 2:
                 if (linha + 1 > tabuleiro.getLinhas() - 1) {
-                    throw new MovimentoInvalidoException("3");
+                    throw new MovimentoInvalidoException("2");
                 }
                 linha += 1;
                 break;
-            case 4:
+            case 3:
                 if (coluna + 1 > tabuleiro.getColunas() - 1) {
-                    throw new MovimentoInvalidoException("4");
+                    throw new MovimentoInvalidoException("3");
                 }
                 coluna += 1;
                 break;
-            case 2:
+            case 4:
                 if (coluna - 1 < 0) {
-                    throw new MovimentoInvalidoException("2");
+                    throw new MovimentoInvalidoException("4");
                 }
                 coluna -= 1;
                 break;

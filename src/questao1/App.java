@@ -10,11 +10,11 @@ public class App {
         Scanner ler = new Scanner(System.in);
         Robo r1 = new Robo("Azul");
 
-        System.out.print("Digite as dimenções do tabuleiro: (X Y)");
+        System.out.print("Digite as dimenções do tabuleiro: (X Y) ");
         int linhas = ler.nextInt();
         int colunas = ler.nextInt();
 
-        System.out.print("Digite as coordenadas da comida: (X Y)");
+        System.out.print("Digite as coordenadas da comida: (X Y) ");
         int a = ler.nextInt();
         int b = ler.nextInt();
         Comida comida = new Comida(a - 1, b - 1);
@@ -22,13 +22,17 @@ public class App {
         Tabuleiro tab = new Tabuleiro(linhas, colunas, comida);
         String i = "";
         System.out.println("\n\nBem vindo ao game. Capture o C");
+
+        tab.mostrarTabuleiro(r1);
+
         while (tab.ganhar(r1)) {
-            tab.mostrarTabuleiro(r1);
+            
+            System.out.println("1-Up  2-Down  3-Right  4-Left");
+
             try {
                 i = ler.next();
                 int j = Integer.parseInt(i);
                 r1.movimentar(j, tab);
-                Thread.sleep(3000);
             } catch (NumberFormatException e) {
                 try {
                     r1.movimentar(i, tab);
@@ -38,6 +42,10 @@ public class App {
             } catch (MovimentoInvalidoException e) {
                 System.out.println(e.getMessage());
             }
+
+            tab.mostrarTabuleiro(r1);
+            
+
         }
         ler.close();
     }
