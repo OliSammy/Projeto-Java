@@ -5,6 +5,7 @@ import questao1.entities.Comida;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 import questao1.exceptions.*;
 
@@ -29,28 +30,36 @@ public class App {
         Tabuleiro tab = new Tabuleiro(linhas, colunas, comida);
         while (condicao) {
             for (int j = 0; j < players.length; j++) {
+                ArrayList<Integer> opcao = new ArrayList();
+                opcao.add(1);
+                opcao.add(2);
+                opcao.add(3);
+                opcao.add(4);
                 System.out.println("Vez do robô " + players[j].getCor());
                 tab.mostrarTabuleiro(r1, r2);
                 try {
                     Thread.sleep(3000);
-                    players[j].movimentar(move.nextInt(1, 5), tab);
+                    players[j].movimentar(opcao.get(move.nextInt(0, 4)), tab);
                     condicao = tab.ganhar(r1, r2);
-                } catch (MovimentoInvalidoException | InterruptedException e) {
+                } catch (MovimentoInvalidoException | InterruptedException | IndexOutOfBoundsException e) {
                     try {
-                        Integer.parseInt(e.getMessage());
-                        players[j].movimentar(move.nextInt(2, 5), tab);
+                        int temp = Integer.parseInt(e.getMessage());
+                        opcao.remove(temp - 1);
+                        players[j].movimentar(opcao.get(move.nextInt(0, 3)), tab);
                         condicao = tab.ganhar(r1, r2);
-                        } catch (MovimentoInvalidoException f) {
+                    } catch (MovimentoInvalidoException f) {
+                        try {
+                            int temp = Integer.parseInt(f.getMessage());
+                            opcao.remove(temp - 1);
+                            players[j].movimentar(opcao.get(move.nextInt(0, 2)), tab);
+                            condicao = tab.ganhar(r1, r2);
+                        } catch (MovimentoInvalidoException g) {
                             try {
-                                players[j].movimentar(move.nextInt(3, 5), tab);
+                                players[j].movimentar(opcao.get(0), tab);
                                 condicao = tab.ganhar(r1, r2);
-                            } catch (MovimentoInvalidoException g) {
-                                try {
-                                    players[j].movimentar(move.nextInt(4, 5), tab);
-                                    condicao = tab.ganhar(r1, r2);
-                                } catch (Exception h) {
-                                }
+                            } catch (Exception h) {
                             }
+                        }
 
                     } catch (NumberFormatException i) {
                         System.out.println(e.getMessage());
