@@ -23,6 +23,18 @@ public class App {
         System.out.print("Digite as coordenadas da comida: ");
         int a = ler.nextInt();
         int b = ler.nextInt();
+        boolean erro=true;
+        while(erro){ 
+            if(a>linhas|| b>colunas ||a<=1 || b<=1){
+            System.out.println("Coordenadas Invalidas,digite novamente");
+            System.out.print("Digite as coordenadas da comida: (X Y) ");
+            a = ler.nextInt(); 
+            b = ler.nextInt();
+            }else{
+                erro=false;
+            }
+        
+        }
         Comida comida = new Comida(a - 1, b - 1);
 
         Tabuleiro tab = new Tabuleiro(linhas, colunas, comida);
@@ -31,7 +43,7 @@ public class App {
                 System.out.println("Vez do robô " + players[j].getCor());
                 tab.mostrarTabuleiro(r1, r2);
                 try {
-                    Thread.sleep(2000);
+                 //   Thread.sleep(2000);
                     players[j].movimentar(movimento.nextInt(1, 5), tab);
                 } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());

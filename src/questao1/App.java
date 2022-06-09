@@ -9,14 +9,23 @@ public class App {
     public static void main(String[] args) throws Exception {
         Scanner ler = new Scanner(System.in);
         Robo r1 = new Robo("Azul");
-
         System.out.print("Digite as dimenções do tabuleiro: (X Y) ");
         int linhas = ler.nextInt();
         int colunas = ler.nextInt();
-
         System.out.print("Digite as coordenadas da comida: (X Y) ");
         int a = ler.nextInt();
         int b = ler.nextInt();
+        boolean erro=true;
+        while(erro){ if(a>linhas || b>colunas ||a<=1 || b<=1){
+            System.out.println("Coordenadas Invalidas,digite novamente");
+            System.out.print("Digite as coordenadas da comida: (X Y) ");
+            a = ler.nextInt(); 
+            b = ler.nextInt();
+            }else{
+                erro=false;
+            }
+        
+        }
         Comida comida = new Comida(a - 1, b - 1);
 
         Tabuleiro tab = new Tabuleiro(linhas, colunas, comida);
